@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="张汝婷 — 深圳大学美术学国画专业作品集。书法、花鸟、山水、人物及设计作品。">
+  <title>张汝婷 · 作品集</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <a href="#home" class="nav-logo">张汝婷</a>
+    <button class="nav-toggle" id="navToggle" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">关于</a></li>
+      <li><a href="#works">作品</a></li>
+      <li><a href="#awards">荣誉</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-bg" style="background-image: url('assets/images/image1.jpeg')"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tag">深圳大学 · 美术学国画</p>
+      <h1 class="hero-title">张汝婷</h1>
+      <p class="hero-subtitle">师法自然 · 以笔墨传情</p>
+      <a href="#works" class="hero-cta">浏览作品</a>
+    </div>
+    <div class="hero-scroll">向下滚动</div>
+  </header>
+
+  <section class="about section" id="about">
+    <div class="container about-grid">
+      <div class="about-image">
+        <img src="assets/images/image29.png" alt="没骨画《花期有约》局部" loading="lazy">
+      </div>
+      <div class="about-text">
+        <h2 class="section-title">关于我</h2>
+        <p>
+          我是张汝婷，深圳大学美术学国画专业学生。创作以<strong>师法自然</strong>为核心，
+          在书法、花鸟、山水、人物等传统绘画领域持续探索，亦涉猎素描、油画、版画、
+          雕塑与设计等多元媒介。
+        </p>
+        <p>
+          研习花鸟国画以来，我从勾勒梅兰竹菊的线条里练习用笔的轻重徐疾，
+          于晕染花叶的深浅间把握用墨的层次——花鸟画不只是对物象的简单再现，
+          更要传达生命的意趣。
+        </p>
+        <ul class="about-meta">
+          <li><span>院校</span>深圳大学 · 美术学国画</li>
+          <li><span>方向</span>中国画 · 书法 · 综合创作</li>
+          <li><span>出生</span>2001.08</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="works section" id="works">
+    <div class="container">
+      <h2 class="section-title center">作品选集</h2>
+      <p class="section-desc center">Portfolio · 2023 — 2025</p>
+
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn" data-filter="calligraphy">书法</button>
+        <button class="filter-btn" data-filter="flower-bird">花鸟</button>
+        <button class="filter-btn" data-filter="landscape">山水</button>
+        <button class="filter-btn" data-filter="figure">人物</button>
+        <button class="filter-btn" data-filter="sketch">素描</button>
+        <button class="filter-btn" data-filter="oil">油画</button>
+        <button class="filter-btn" data-filter="print">版画</button>
+        <button class="filter-btn" data-filter="sculpture">雕塑</button>
+        <button class="filter-btn" data-filter="watercolor">水彩</button>
+        <button class="filter-btn" data-filter="design">设计</button>
+      </div>
+
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <section class="awards section" id="awards">
+    <div class="container">
+      <h2 class="section-title center">荣誉经历</h2>
+      <ul class="awards-list" id="awardsList"></ul>
+    </div>
+  </section>
+
+  <section class="contact section" id="contact">
+    <div class="container contact-inner">
+      <h2 class="section-title center">联系我</h2>
+      <p class="section-desc center">欢迎交流合作 · 定制创作</p>
+      <div class="contact-cards">
+        <a href="mailto:1434193887@qq.com" class="contact-card">
+          <span class="contact-label">邮箱</span>
+          <span class="contact-value">1434193887@qq.com</span>
+        </a>
+        <a href="https://github.com/sylviaruting" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">@sylviaruting</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 张汝婷 · 保留所有权利</p>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="关闭">×</button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="上一张">‹</button>
+    <button class="lightbox-next" id="lightboxNext" aria-label="下一张">›</button>
+    <div class="lightbox-content">
+      <img src="" alt="" id="lightboxImg">
+      <div class="lightbox-info">
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxMeta"></p>
+        <p id="lightboxDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/works.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
