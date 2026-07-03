@@ -1,0 +1,9 @@
+[tool.black]
+line-length = 300
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 300
+
+[tool.ruff.format]
+line-length = 300

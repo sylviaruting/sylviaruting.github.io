@@ -6,7 +6,8 @@
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxContent = document.getElementById('lightboxContent');
+  const lightboxImages = document.getElementById('lightboxImages');
   const lightboxTitle = document.getElementById('lightboxTitle');
   const lightboxMeta = document.getElementById('lightboxMeta');
   const lightboxDesc = document.getElementById('lightboxDesc');
@@ -18,20 +19,29 @@
   let visibleWorks = [];
   let currentIndex = 0;
 
+  function getWorkImages(work) {
+    return work.images && work.images.length ? work.images : [work.image];
+  }
+
   function renderGallery() {
-    gallery.innerHTML = WORKS.map((work) => `
+    gallery.innerHTML = WORKS.map((work) => {
+      const imageCount = getWorkImages(work).length;
+      const countTag = imageCount > 1 ? `<span class="gallery-count">${imageCount} 张</span>` : '';
+      return `
       <article class="gallery-item${currentFilter !== 'all' && work.category !== currentFilter ? ' hidden' : ''}"
                data-id="${work.id}" data-category="${work.category}">
         <div class="gallery-frame">
           <img src="${work.image}" alt="${work.title}" loading="lazy">
           <span class="gallery-tag">${work.categoryLabel}</span>
+          ${countTag}
         </div>
         <div class="gallery-info">
           <h3>${work.title}</h3>
           <p>${work.year} · ${work.medium}</p>
         </div>
       </article>
-    `).join('');
+    `;
+    }).join('');
 
     gallery.querySelectorAll('.gallery-item').forEach((item, index) => {
       item.style.animationDelay = `${index * 0.04}s`;
@@ -65,12 +75,29 @@
     document.body.style.overflow = '';
   }
 
+  function formatMeta(work, extra) {
+    const parts = [work.categoryLabel, work.year, work.size, work.medium, extra].filter(
+      (part) => part && part !== '—'
+    );
+    return parts.join(' · ');
+  }
+
   function updateLightbox() {
     const work = visibleWorks[currentIndex];
-    lightboxImg.src = work.image;
-    lightboxImg.alt = work.title;
+    const images = getWorkImages(work);
+    const isGroup = images.length > 1;
+
+    lightboxContent.classList.toggle('is-group', isGroup);
+    lightboxContent.classList.toggle('is-single', !isGroup);
+
+    lightboxImages.innerHTML = images
+      .map((src, index) => `<img src="${src}" alt="${work.title}（${index + 1}）" loading="lazy">`)
+      .join('');
+
     lightboxTitle.textContent = work.title;
-    lightboxMeta.textContent = `${work.categoryLabel} · ${work.year} · ${work.size} · ${work.medium}`;
+    lightboxMeta.textContent = isGroup
+      ? formatMeta(work, `共 ${images.length} 张`)
+      : formatMeta(work);
     lightboxDesc.textContent = work.description;
   }
 
