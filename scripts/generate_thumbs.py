@@ -13,17 +13,32 @@ from pathlib import Path
 
 from PIL import Image, ImageOps
 
-MAX_SIZE = 480
+MAX_SIZE = 960
+TALL_ASPECT = 0.4
+WIDE_ASPECT = 2.5
+TALL_MAX_BOX = (720, 2400)
+WIDE_MAX_BOX = (2400, 400)
 JPEG_QUALITY = 80
 HERO_MAX_WIDTH = 1600
 SUPPORTED = {".jpg", ".jpeg", ".png", ".webp"}
 
 
-def resize_image(img: Image.Image, max_size: int) -> Image.Image:
+def get_max_box(width: int, height: int) -> tuple[int, int]:
+    aspect = width / height
+    if aspect < TALL_ASPECT:
+        return TALL_MAX_BOX
+    if aspect > WIDE_ASPECT:
+        return WIDE_MAX_BOX
+    return (MAX_SIZE, MAX_SIZE)
+
+
+def resize_image(img: Image.Image, max_box: int | tuple[int, int]) -> Image.Image:
     img = ImageOps.exif_transpose(img)
     if img.mode not in ("RGB", "L"):
         img = img.convert("RGB")
-    img.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
+    if isinstance(max_box, int):
+        max_box = (max_box, max_box)
+    img.thumbnail(max_box, Image.Resampling.LANCZOS)
     return img
 
 
@@ -49,7 +64,9 @@ def main() -> None:
             continue
 
         with Image.open(src) as img:
-            thumb = resize_image(img.copy(), MAX_SIZE)
+            img = ImageOps.exif_transpose(img)
+            max_box = get_max_box(img.width, img.height)
+            thumb = resize_image(img.copy(), max_box)
             out = thumbs_dir / f"{src.stem}.jpg"
             save_jpeg(thumb, out)
             count += 1
