@@ -23,6 +23,11 @@
     return work.images && work.images.length ? work.images : [work.image];
   }
 
+  function thumbPath(imagePath) {
+    const base = imagePath.split('/').pop().replace(/\.[^.]+$/, '');
+    return `assets/thumbs/${base}.jpg`;
+  }
+
   function renderGallery() {
     gallery.innerHTML = WORKS.map((work) => {
       const imageCount = getWorkImages(work).length;
@@ -31,7 +36,7 @@
       <article class="gallery-item${currentFilter !== 'all' && work.category !== currentFilter ? ' hidden' : ''}"
                data-id="${work.id}" data-category="${work.category}">
         <div class="gallery-frame">
-          <img src="${work.image}" alt="${work.title}" loading="lazy">
+          <img src="${thumbPath(work.image)}" alt="${work.title}" loading="lazy" decoding="async">
           <span class="gallery-tag">${work.categoryLabel}</span>
           ${countTag}
         </div>
@@ -73,6 +78,7 @@
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    lightboxImages.innerHTML = '';
   }
 
   function formatMeta(work, extra) {
@@ -91,7 +97,7 @@
     lightboxContent.classList.toggle('is-single', !isGroup);
 
     lightboxImages.innerHTML = images
-      .map((src, index) => `<img src="${src}" alt="${work.title}（${index + 1}）" loading="lazy">`)
+      .map((src, index) => `<img src="${src}" alt="${work.title}（${index + 1}）">`)
       .join('');
 
     lightboxTitle.textContent = work.title;
