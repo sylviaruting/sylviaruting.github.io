@@ -1,8 +1,13 @@
 {
-  "editor.rulers": [300],
+  "editor.rulers": [
+    300
+  ],
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true
   },
-  "black-formatter.args": ["--line-length", "300"]
+  "black-formatter.args": [
+    "--line-length",
+    "300"
+  ]
 }

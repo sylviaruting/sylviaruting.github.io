@@ -23,7 +23,7 @@ const WORKS = [
     description: '山水作品，以寒林雪景展现传统山水意境与空间层次。',
   },
   {
-    id: 'calligraphy-8',
+    id: 'calligraphy-1',
     title: '唐诗词选',
     category: 'calligraphy',
     categoryLabel: '书法',
@@ -288,7 +288,7 @@ const WORKS = [
     description: '白描作品《永乐宫壁画人物》，以线条表现壁画人物神韵与衣纹结构。',
   },
   {
-    id: 'figure-32',
+    id: 'figure-25',
     title: '神骏图（临）',
     category: 'figure',
     categoryLabel: '人物',
@@ -498,7 +498,7 @@ const WORKS = [
     description: '版画创作系列。',
   },
   {
-    id: 'sculpture-51',
+    id: 'sculpture-44',
     title: '雕塑作品（一）',
     category: 'sculpture',
     categoryLabel: '雕塑',
@@ -510,7 +510,7 @@ const WORKS = [
     description: '雕塑创作系列，从立体空间理解形态、体量与结构；练习体积感与空间关系；探索材料与造型的表达。',
   },
   {
-    id: 'sculpture-52',
+    id: 'sculpture-45',
     title: '雕塑作品（二）',
     category: 'sculpture',
     categoryLabel: '雕塑',
@@ -577,7 +577,7 @@ const WORKS = [
     description: '版式设计练习，CDR 软件制作。',
   },
   {
-    id: 'design-58',
+    id: 'design-51',
     title: '日落计划 · 音乐会海报',
     category: 'design',
     categoryLabel: '设计',
@@ -589,7 +589,7 @@ const WORKS = [
     description: '以「日落计划」为名的音乐会海报设计，寓意青春应去追寻梦想。',
   },
   {
-    id: 'design-59',
+    id: 'design-52',
     title: 'LOGO 设计',
     category: 'design',
     categoryLabel: '设计',
@@ -634,7 +634,7 @@ const WORKS = [
     description: 'IP 形象与品牌视觉设计。',
   },
   {
-    id: 'design-63',
+    id: 'design-56',
     title: '华商律所logo',
     category: 'design',
     categoryLabel: '设计',
